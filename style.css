@@ -1,48 +1,78 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 body {
     font-family: "Poppins", sans-serif;
-    background-color: #8c52ff;
+    background-color: #ffffff; 
 }
+
 section {
     text-align: center;
     border-radius: 10px;
     width: 400px;
     margin: auto;
-    background-color: #fff;
+    background-color: #424242; 
     margin-top: 75px;
-    box-shadow: 0px 10px 36px 16px rgba(0,0,0,0.1);
+    box-shadow: 0px 10px 36px 16px rgba(0, 0, 0, 0.5);
 }
 .game--title {
     padding-top: 20px;
+    color: #fff; /* White color for the title */
 }
 .game--container {
     display: grid;
     grid-template-columns: repeat(3, auto);
     width: 150px;
-    margin: 120px;
+    margin: 70px;
     margin-bottom: 10px;
     margin-top: 10px;
+    padding: 10px; /* Padding to make the grid lines thicker */
+    
 }
 .cell {
     font-family: "Poppins", sans-serif;
     width: 50px;
     height: 50px;
-    box-shadow: 0 0 0 1px #333333;
-    border: 1px solid #333333;
+    box-shadow: inset 0 0 0 4px #00897b; /* Teal color for grid lines */
+    border: 4px solid #444444;
     cursor: pointer;
     line-height: 50px;
-    font-size: 20px;
+    font-size: 60px;
+    padding: 10px; /* Padding to make the grid lines thicker */
+    font-weight: bolder;
 }
+
 button {
-    margin-bottom: 20px;
-    height: 30px;
+    background-color: #00897b; /* Teal background */
+    color: #fff; /* White text */
     border: none;
+    padding: 10px 20px;
+    font-size: 16px;
     border-radius: 5px;
-    color: #fff;
-    background-color: #8c52ff;
     cursor: pointer;
+    outline: none;
+    position: relative;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+    font-family: "Poppins", sans-serif;
 }
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+    transform: scale(0);
+    border-radius: 5px;
+}
+
+button:hover::before {
+    transform: scale(1);
+}
+
 button:hover {
-    transition: 0.25s;
-    background-color: #c1a2fe;
+    background-color: #00695c; /* Darker teal */
+    transform: scale(1.1); /* Slightly larger */
 }
