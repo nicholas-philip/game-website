@@ -31,10 +31,20 @@ function handleCellClick(clickedCellEvent) {
 }
 
 function handleCellPlayed(clickedCell, clickedCellIndex) {
-    
-        gameState[clickedCellIndex] = currentPlayer;
-        clickedCell.innerHTML = currentPlayer;
+    gameState[clickedCellIndex] = currentPlayer;
+    clickedCell.innerHTML = currentPlayer;
+
+    // Apply styles directly based on the current player
+    if (currentPlayer === "X") {
+        clickedCell.style.color = "#fdd835"; 
+        clickedCell.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.3)'; // Subtle shadow
+    } else if (currentPlayer === "O") {
+        clickedCell.style.color = '#ff5722'; // Vibrant blue for O
+        clickedCell.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.3)'; // Subtle shadow
     }
+
+}
+
 
     const winningConditions = [
         [0, 1, 2],
@@ -63,6 +73,7 @@ function handleCellPlayed(clickedCell, clickedCellIndex) {
         }
     if (roundWon) {
         statusDisplay.innerHTML = winningMessage();
+        statusDisplay.style.color = "#fdd835"; // Set the color for the winning message (yellow)
         gameActive = false;
         return;
     }
@@ -70,6 +81,7 @@ function handleCellPlayed(clickedCell, clickedCellIndex) {
     let roundDraw = !gameState.includes("");
     if (roundDraw) {
         statusDisplay.innerHTML = drawMessage();
+        statusDisplay.style.color = "#fdd835"; // Set the color for the winning message (yellow)
         gameActive = false;
         return;
     }
@@ -80,6 +92,7 @@ function handleCellPlayed(clickedCell, clickedCellIndex) {
 function handlePlayerChange() {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     statusDisplay.innerHTML = currentPlayerTurn();
+    statusDisplay.style.color = "#ffffff";
 }
 
 function handleRestartGame() {
@@ -87,6 +100,8 @@ function handleRestartGame() {
     currentPlayer = "X";
     gameState = ["", "", "", "", "", "", "", "", ""];
     statusDisplay.innerHTML = currentPlayerTurn();
+    statusDisplay.style.color = "#ffffff"; // Reset color for the player turn message
     document.querySelectorAll('.cell')
                .forEach(cell => cell.innerHTML = "");
-}  
+} 
+
